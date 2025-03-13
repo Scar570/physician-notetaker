@@ -1,13 +1,20 @@
-from fastapi import FastAPI
 import spacy
+from fastapi import FastAPI
 from transformers import pipeline
 from pydantic import BaseModel
+import subprocess
 
-# Create FastAPI instance
+# Ensure the spaCy model is installed
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
+# Create FastAPI app
 app = FastAPI()
 
-# Load models
-nlp = spacy.load("en_core_web_sm")
+# Load sentiment analysis model
 sentiment_model = pipeline("text-classification", model="distilbert-base-uncased-finetuned-sst-2-english")
 
 # Define input model
@@ -29,17 +36,4 @@ def analyze_text(data: InputText):
     # Sentiment Analysis
     sentiment = sentiment_model(text)[0]['label']
 
-    # Example SOAP Note Structure
-    soap_note = {
-        "Subjective": {"Chief_Complaint": text},
-        "Objective": {"Findings": symptoms},
-        "Assessment": {"Sentiment": sentiment},
-        "Plan": {"Next Steps": "Continue observation or follow-up if needed"}
-    }
-
-    return {"Symptoms": symptoms, "Sentiment": sentiment, "SOAP Note": soap_note}
-
-# This ensures the script runs only when executed directly
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    return {"Symptoms": symptoms, "Sentiment": sentiment}
