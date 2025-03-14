@@ -15,7 +15,7 @@ except OSError:
 app = FastAPI()
 
 # Load sentiment analysis model
-sentiment_model = pipeline("text-classification", model="distilbert-base-uncased-finetuned-sst-2-english")
+sentiment_model = pipeline("text-classification", model="distilbert-base-uncased")
 
 # Define input model
 class InputText(BaseModel):
