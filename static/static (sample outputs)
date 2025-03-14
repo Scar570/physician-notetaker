@@ -1,0 +1,16 @@
+{
+  "Symptoms": ["Neck pain", "Back pain"],
+  "Sentiment": "Neutral",
+  "SOAP Note": {
+    "Subjective": {"Chief_Complaint": "I have back pain after my accident."},
+    "Objective": {"Findings": ["back pain"]},
+    "Assessment": {"Sentiment": "Neutral"},
+    "Plan": {"Next Steps": "Continue observation"}
+  }
+}
+
+ Methodology
+NER (Named Entity Recognition): Extracts Symptoms, Treatment, and Diagnosis.
+Summarization: Uses facebook/bart-large-cnn for medical summarization.
+Sentiment Analysis: Uses DistilBERT to classify patient emotions.
+SOAP Note Generation: Formats extracted data into a structured medical report.
