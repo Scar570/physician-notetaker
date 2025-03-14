@@ -7,7 +7,11 @@ This API extracts medical details, performs sentiment analysis, and generates SO
 
 
 ## 📂 Project Structure
-📂 Physician-Notetaker/ ├── 📜 app.py ├── 📜 requirements.txt ├── 📜 README.md ├── 📂 static/ (sample outputs)
+📂 Physician-Notetaker/
+├── 📜 app.py 
+├── 📜 requirements.txt 
+├── 📜 README.md 
+├── 📂 static/ (sample outputs)
 
 
 ## 🏗 Setup & Installation
