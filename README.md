@@ -6,7 +6,14 @@ AI-based medical transcription and NLP summarization
 This API extracts medical details, performs sentiment analysis, and generates SOAP notes from physician-patient conversations.
 
 
-Physician-Notetaker/ → app.py | requirements.txt | README.md | static/ (sample outputs)
+```
+📂 Physician-Notetaker/ 
+├── 📜 app.py 
+├── 📜 requirements.txt 
+├── 📜 README.md 
+├── 📂 static/ (sample outputs)
+```
+
 
 
 
